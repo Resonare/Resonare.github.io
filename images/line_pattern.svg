@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <pattern id="line" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+            <!-- <line x1="0" y1="17" x2="17" y2="0" style="stroke:#ff7d06;stroke-width:2" /> -->
+            <rect style="fill: #ff7d06" x="0" y="0" rx="0" ry="0" width="30" height="1.7" transform="rotate(45)" />   
+        </pattern>
+    </defs>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#line)" />
+</svg>

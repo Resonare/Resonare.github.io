@@ -1,0 +1,387 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+body {
+    margin: 0;
+    background-color: var(--dark-grey);
+
+    --orange: #ff7d06;
+    --grey: #666666;
+    --dark-grey: #505050;
+    --text-grey: #727272;
+
+    --common-delay: 250ms;
+    --logo-delay: 200ms;
+
+    --nav-options-delay: 200ms;
+    --nav-options-top-border-delay: 190ms;
+    --nav-options-top-border-time: 400ms;
+    --nav-options-side-border-time: 340ms;
+
+    --hero-title-rect-delay: 400ms;
+    --hero-text-delay: 200ms;
+    --hero-switching-time: 400ms;
+
+    --continue-container-delay: 200ms;
+    --continue-arrow-cycle-time: 800ms;
+
+    --scroll-y: 0;
+    --promo-section-start: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d4d4d4;
+}
+
+section {
+    transition: opacity var(--common-delay);
+}
+
+.startSection {
+    background-color: transparent;
+    color: white;
+    height: 100svh;
+    position: relative;
+    overflow: hidden;
+
+    /* animations */
+    opacity: 0;
+}
+
+.startSection .startSectionBackground {
+    position: absolute;
+    width: 105%;
+    height: 105%;
+    top: -2.5%;
+    left: -2.5%;
+    z-index: -1;
+    background-color: var(--grey);
+    background: url("./images/background.png") 0 0 repeat;
+    background-size: cover;
+
+    /* animations */
+    transition: transform 800ms;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.startSection .navContainer {
+    display: flex;
+    padding: 1.8% 3%;
+    justify-content: space-between;
+}
+
+.startSection .logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 1.5svw;
+    cursor: pointer;
+
+    /* animations */
+    opacity: 0;
+    transform: translateX(-1%);
+    transition: opacity var(--logo-delay), transform var(--logo-delay);
+}
+
+.startSection .logoContainer > .logoImageContainer {
+    width: 4svw;
+    height: 4svw;
+}
+
+.startSection .logoContainer > .logoImageContainer > img {
+    width: 100%;
+    height: 100%;
+}
+
+.startSection .logoContainer > h1 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 3.5em;
+    margin: 0;
+}
+
+.startSection .navOptionsContainer {
+    display: flex;
+    align-items: center;
+    gap: 2svw;
+}
+
+.startSection .navOptionsContainer > div {
+    position: relative;
+    height: 1.8em;
+    padding-bottom: 0.4em;
+}
+
+.startSection .navOptionsContainer > div > div {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+
+    /* animations */
+    opacity: 0;
+    transition: opacity var(--nav-options-delay),
+        width var(--nav-options-top-border-time),
+        height var(--nav-options-side-border-time);
+}
+
+.startSection .navOptionsContainer > div > div.sideBorder {
+    border-width: 0 3px 3px 3px;
+    border-color: var(--orange);
+    border-style: solid;
+
+    /* animations */
+    height: 0;
+}
+
+.startSection .navOptionsContainer > div:hover > div.sideBorder {
+    height: 70%;
+}
+
+.startSection .navOptionsContainer > div > div.topBorder {
+    border-top: var(--orange) 3px solid;
+    margin-left: 2px;
+
+    /* animations */
+    transition-delay: 0;
+    width: 0;
+    height: 70%;
+}
+
+.startSection .navOptionsContainer > div:hover > div.topBorder {
+    /* animations */
+    width: 101%;
+    transition-delay: var(--nav-options-top-border-delay);
+}
+
+.startSection .navOptionsContainer > div > a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 100;
+    font-size: 1.8em;
+    z-index: 1;
+}
+
+.startSection .contactsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.startSection .contactsContainer > p {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+.startSection .contactsContainer > .number {
+    font-size: 2.8em;
+}
+
+.startSection .contactsContainer > .address {
+    font-size: 1.4em;
+}
+
+.startSection .heroContainer {
+    margin-top: 18svh;
+    margin-left: 8vw;
+}
+
+.startSection .heroContainer > div:nth-child(1) {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.startSection .heroContainer > div:nth-child(1) > h1 {
+    font-family: "Raleway", sans-serif;
+    width: fit-content;
+    font-weight: 700;
+    font-size: 4.5em;
+    color: var(--orange);
+    background-image: url("./images/line_pattern.svg");
+    margin: 0;
+    padding: 2svh 1vw;
+
+    /* animations */
+    opacity: 0;
+}
+
+.startSection .heroContainer > div:nth-child(1) > div {
+    /* animations */
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--orange);
+    transition: width var(--hero-title-rect-delay),
+        transform var(--hero-title-rect-delay);
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.startSection .heroContainer > div:nth-child(2) {
+    display: flex;
+}
+
+.startSection .heroContainer > div:nth-child(2) > p {
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 2.2em;
+    margin-top: 1.2vh;
+
+    /* animations */
+    opacity: 0;
+    transition: opacity var(--hero-text-delay), transform var(--hero-text-delay);
+    transform: translateX(-1%);
+}
+
+.startSection .heroContainer > div:nth-child(2) > div {
+    position: relative;
+}
+
+.startSection .heroContainer > div:nth-child(2) > div > p {
+    position: absolute;
+    top: 2.2em;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 2.2em;
+    margin-top: 1.2vh;
+    color: var(--orange);
+    cursor: pointer;
+
+    /* animations */
+    opacity: 0;
+    transition: opacity var(--hero-switching-time),
+        top var(--hero-switching-time);
+}
+
+.startSection .heroContainer > div:nth-child(2) > div > p:nth-child(1) {
+    /* animations */
+    top: 0;
+    opacity: 0;
+    transition: opacity var(--hero-text-delay), transform var(--hero-text-delay);
+    transform: translateY(40%);
+}
+
+.startSection .continueContainer {
+    position: absolute;
+    bottom: 4svh;
+    left: 50vw;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+
+    /* animations */
+    opacity: 0;
+    transition: opacity var(--continue-container-delay);
+}
+
+.startSection .continueContainer > p {
+    font-family: "Raleway", sans-serif;
+    font-size: 2em;
+    font-weight: 200;
+}
+
+.startSection .continueContainer > div {
+    display: flex;
+    justify-content: center;
+    height: 4svh;
+    margin: auto;
+    margin-top: 1svh;
+
+    /* animations */
+    animation-duration: var(--continue-arrow-cycle-time);
+    animation-name: continueArrow;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes continueArrow {
+    from {
+        transform: translateY(1svh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.startSection .continueContainer > div > img {
+    width: 55%;
+    height: 100%;
+}
+
+/* ==============================PROMO SECTION============================== */
+.promoSection {
+    background-color: white;
+    color: var(--text-grey);
+    display: flex;
+    height: 100svh;
+}
+
+.promoSection .mainContainer {
+    width: 50%;
+    height: 100%;
+}
+
+.promoSection .textContainer {
+    padding: 20svh 8vw;
+
+    /* animations */
+    opacity: calc(var(--scroll-y) - var(--promo-section-start));
+    transform: translateX(
+        calc(
+            -10% + 10% * clamp(0, calc(var(--scroll-y) -
+                            var(--promo-section-start)), 1)
+        )
+    );
+    transition: opacity var(--common-delay), transform var(--common-delay);
+}
+
+.promoSection .textContainer > h1 {
+    font-family: "Raleway", sans-serif;
+    font-size: 3.2em;
+    text-transform: uppercase;
+    margin-bottom: 5vh;
+}
+
+.promoSection .textContainer > p {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.8em;
+    font-weight: 300;
+}
+
+.promoSection .textContainer > p > span {
+    font-weight: 700;
+}
+
+.promoSection .sideImageContainer {
+    width: 50%;
+    height: 100%;
+
+    /* animations */
+    opacity: calc(var(--scroll-y) - var(--promo-section-start));
+    transform: translateY(
+        calc(
+            10% - 10% *
+                clamp(0, calc(var(--scroll-y) - var(--promo-section-start)), 1)
+        )
+    );
+    transition: opacity var(--common-delay), transform var(--common-delay);
+}
+
+.promoSection .sideImageContainer > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right top;
+}
